@@ -1,0 +1,58 @@
+body { font-family:monospace;font-size: 100%; }
+a:link {color:#413EE1;}      /* unvisited link */
+a:visited {color:#413EE1;}  /* visited link */
+a:hover {color:#000;}  /* mouse over link */
+a:active {color:#000;}  /* selected link */
+a {text-decoration: none}
+
+img {
+	border-style: none
+}
+#summary td {
+	font-weight: normal;
+	font-size:13px;
+	line-height: 10px;
+	text-align: right
+}
+#summary th{
+	font-weight: normal;
+	text-align:right;
+	font-size:14px;
+	padding-top:2px;
+	padding-left:20px;
+	padding-bottom:4px;
+	color:#000
+}
+#sibnr td {
+	padding:3px 7px 2px 7px
+	font-weight: normal;
+	font-size:14px;
+	line-height: 10px;
+	text-align: right
+}
+#sibnr th{
+	font-weight: normal;
+	text-align:left;
+	font-size:14px;
+	padding-top:5px;
+	padding-left:20px;
+	padding-bottom:4px;
+	color:#000
+}
+#main th{
+	font-weight: normal;
+	text-align:left;
+	font-size:13px;
+	padding-top:2px;
+	padding-left:6px;
+	padding-bottom:4px;
+	color:#000
+}
+
+@font-face{
+	font-family:'ipacct';
+	src:url('/ipacct.ttf');}
+
+table.dataTable tr.odd { background-color: #CBE7ED; } 
+table.dataTable tr.even { background-color: white; } 
+table.dataTable tr.row_selected { background-color: #587393; }

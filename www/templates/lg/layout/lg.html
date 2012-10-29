@@ -1,0 +1,75 @@
+<center>
+{if $company_logo_type=='img'}
+	<img src="{$company_logo_src}">
+{else}
+	{$company_logo_src}
+{/if}
+</center>
+<center>
+	<h2>{$local_as} Looking glass</h2>
+</center>
+<p>
+	<hr size=2 width="85%">
+<p>
+<form method="get" action="/">
+	<center>
+		<table border=0 bgcolor="#efefef">
+			<tr>
+				<td>
+					<table id="main" border=0 cellpadding=2 cellspacing=2>
+						<tr>
+							<th bgcolor="#002e5d" nowrap><font color="#ffffff">type of query</font></th>
+							<th bgcolor="#002e5d" nowrap><font color="#ffffff">additional parameters</font></th>
+							<th bgcolor="#002e5d" nowrap><font color="#ffffff">node</font></th>
+						</tr>
+						<tr>
+							<td>
+								<table border=0 cellpadding=2 cellspacing=2>
+									<tr>
+										<td><input type="radio" name="cmd" value="bgp" {if $cmd=='bgp'}checked{/if}></td>
+										<td>&nbsp;bgp</td>
+									</tr>
+									<tr>
+										<td><input type="radio" name="cmd" value="sibnar" {if $cmd=='sibnar'}checked{/if}></td><td>&nbsp;bgp&nbsp;advertised-routes</td>
+									</tr>
+									<tr>
+										<td><input type="radio" name="cmd" value="sibnrr" {if $cmd=='sibnrr'}checked{/if}></td><td>&nbsp;bgp&nbsp;received-routes</td>
+									</tr>
+									<tr>
+										<td><input type="radio" name="cmd" value="summary" {if $cmd=='summary'}checked{/if}></td><td>&nbsp;bgp&nbsp;summary</td>
+									</tr>
+								</table>
+								<input type="hidden" name="proto" value="ipv4">
+							</td>
+							<td align="center">&nbsp;<br><input name="addr" size="30" value="{$addr}"><br><font size="-1">&nbsp;<sup>&nbsp;</sup>&nbsp;</font></td>
+							<td align="right">&nbsp;<br>
+								<select name="router">
+									{section name=i loop=$nodes}
+									<option value="{$nodes[i].ip}" {if $router==$nodes[i].ip}selected="selected"{/if}>{$nodes[i].name}</option>
+									{/section}
+								</select>
+								<br><font size="-1">&nbsp;&nbsp;<sup>&nbsp;</sup>&nbsp;</font>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" colspan=3>
+								<p>
+								<input type="submit" value="show"> | 
+								<input type="reset" value="reset"> 
+								<p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</center>
+	<p>
+</form>
+<p>
+{if $command!=''}
+	<center>
+		<h3>Server:<font color="#1E63BC"> {$router}</font> | Command: <font color="#1E63BC"> {$command}</font></h3>
+	</center>
+	<hr size="2" width="85%">
+{/if}

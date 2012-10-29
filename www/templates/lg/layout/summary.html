@@ -1,0 +1,47 @@
+{literal}
+
+{/literal}
+
+<pre>{$bgp[0]}</pre>
+<table id="summary">
+	<thead>
+		<th style="text-align:left;padding-left:0px">Neighbor</th>
+		<th style="text-align:left;padding-left:0px">Description</th>
+		<th>V</th>
+		<th>AS</th>
+		<th>MsgRcvd</th>
+		<th>MsgSend</th>
+		<th>TblVer</th>
+		<th>InQ</th>
+		<th>OutQ</th>
+		<th>Up/Down</th>
+		<th>State/PfxRcd</th>
+	</thead>
+	<tbody>
+		{section name=i loop=$bgp start=2}
+		<tr>
+		<td style="text-align:left;padding-left:0px"><a href="?cmd=sibn&n={$bgp[i].neighbor}&r={$router}">{$bgp[i].neighbor}</a></td>
+		<td style="text-align:left;padding-left:0px">{$bgp[i].description}</td>
+		<td>{$bgp[i].version}</td>
+		<td><a class="as2name" href="https://apps.db.ripe.net/search/query.html?searchtext=AS{$bgp[i].as}" target="_blank" title="{$bgp[i].title}">{$bgp[i].as}</a></td>
+		<td>{$bgp[i].msgrcvd}</td>
+		<td>{$bgp[i].msgsent}</td>
+		<td>{$bgp[i].tblver}</td>
+		<td>{$bgp[i].inq}</td>
+		<td>{$bgp[i].outq}</td>
+		<td>{$bgp[i].uptime}</td>
+		{if preg_match("/[0-9]/",$bgp[i].state)}
+			{if $bgp[i].state lt $prefix_count}
+				<td><a href="?cmd=sibnr&n={$bgp[i].neighbor}&r={$router}">{$bgp[i].state}</a></td>
+			{else}
+				<td><a class="errortip" href="#" title="Warning|Prefix count too big!"><font color="red">{$bgp[i].state}</font></a></td>
+			{/if}
+		{else}
+			<td>{$bgp[i].state}</td>
+		{/if}
+		</tr>
+		{/section}
+	</tbody>
+</table>
+<br />
+<pre>{$bgp[1]}</pre>

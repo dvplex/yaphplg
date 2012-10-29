@@ -19,6 +19,9 @@ $nodes[]=array('name'=>'router2','ip'=>'10.10.10.2','pass'=>'123456');
 //Maximum prefixes to show when clicking to show neighbor routes
 $prefix_count='15000';
 
+//Rsclient configuration
+$rsclient='yes';
+
 //Company logo
 $company_logo_type='text'; //types are text or img
 $company_logo_src='<a href="http://www.ipacct.com/" target=_blank><span style="background-color: #fff"><font face="ipacct" size="200"><font color="#cc0101">IP</font><font color="#002e5d">ACCT</font></font></span></a>';

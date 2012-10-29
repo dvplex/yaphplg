@@ -27,13 +27,19 @@ switch ($cmd) {
 
 //{{{ Show ip bgp neighbors x.x.x.x/xx advertised-routes
 	case 'sibnar':
+		if ($rsclient=='yes')
 		$neighbor=$_GET['addr'];
 		$host=$_GET['router'];
 		$pass=getNodePwd($host,$nodes);
 		$sibnr=lg_bgp($host,'2605',$pass,'show ip bgp neighbors '.$neighbor.' advertised-routes');	
+		if ($rsclient=='yes')
+			$sibnr=lg_bgp($host,'2605',$pass,'show ip bgp rsclient '.$neighbor);	
 		assign('router',$_GET['router']);
-		if (preg_match('/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/',$_GET['addr']))
+		if (preg_match('/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/',$_GET['addr'])) {
 			$command='show ip bgp neighbors '.$_GET['addr'].' advertised-routes';
+			if ($rsclient=='yes')
+				$command='show ip bgp rsclient '.$_GET['addr'];
+		}
 		else
 			$command='<font color="red">Please specify IP address</font>';
 	

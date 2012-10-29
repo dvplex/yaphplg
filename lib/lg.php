@@ -42,6 +42,7 @@ assign('prefix_count',$prefix_count);
 assign('command','');
 assign('cmd',$_GET['cmd']);
 assign('addr',$_GET['addr']);
+assign('rsclient',$rsclient);
 assign('ref','');
 assign('company_logo_type',$company_logo_type);
 assign('company_logo_src',$company_logo_src);
@@ -172,8 +173,8 @@ function lg_bgp($host,$port,$pass,$cmd) {
 		exit;
 	}
 
-//show ip bgp neighbors IP routes | received-routes | advertised-routes
-	if (preg_match('/(show ip bgp neighbors) ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}) (routes)/',$command)||preg_match('/(show ip bgp neighbors) ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}) (received-routes)/',$command)||preg_match('/(show ip bgp neighbors) ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}) (advertised-routes)/',$command)) {
+//show ip bgp neighbors IP routes | received-routes | advertised-routes | rsclient
+	if (preg_match('/(show ip bgp neighbors) ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}) (routes)/',$command)||preg_match('/(show ip bgp neighbors) ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}) (received-routes)/',$command)||preg_match('/(show ip bgp neighbors) ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}) (advertised-routes)/',$command)||preg_match('/(show ip bgp rsclient) ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/',$command)) {
 		if (!get_string_between($readbuf,'Network','Total')) {
 			$sibnr="Sorry! No routes available for this neighbor!";
 			return $sibnr;
